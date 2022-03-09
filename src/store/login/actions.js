@@ -1,4 +1,4 @@
-import { CHANGE_USERNAME, CHANGE_PASSWORD } from "../constants/actionTypes";
+import { CHANGE_USERNAME, CHANGE_PASSWORD } from "../../constants/actionTypes";
 
 // export const actionChangeUsername = {
 //   type: CHANGE_USERNAME,

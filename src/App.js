@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import "./App.css";
-import { changePassword, changeUsername } from "./store/actions";
+import { changePassword, changeUsername } from "./store/login/actions";
 
 function App(props) {
   const { username, password, dispatch, changeUsername, changePassword } =
@@ -65,8 +65,8 @@ function App(props) {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    username: state.username,
-    password: state.password
+    username: state.login.username,
+    password: state.login.password
   };
 };
 
