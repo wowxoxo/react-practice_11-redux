@@ -1,17 +1,20 @@
-import { CHANGE_USERNAME, CHANGE_PASSWORD } from "./action-types.ts";
+import { LoginActionType } from "./action-types";
+import { LoginAction } from "./actions";
 
 const initState = {
   username: "",
   password: ""
 };
 
-export const loginReducer = (state = initState, action) => {
+export const loginReducer = (state: typeof initState = initState, action: LoginAction) => {
   switch (action.type) {
-    case CHANGE_USERNAME:
+    case LoginActionType.CHANGE_USERNAME:
       return { ...state, username: action.payload };
 
-    case CHANGE_PASSWORD:
+    case LoginActionType.CHANGE_PASSWORD:
       return { ...state, password: action.payload };
+
+    default:
+      return state
   }
-  return state;
 };

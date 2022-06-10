@@ -1,13 +1,13 @@
 import { Dispatch } from "react";
-import { LoginActionType } from "./action-types.ts";
-import { LoginType } from "./actions";
+import { LoginActionType } from "./action-types";
+import { LoginAction } from "./actions";
 
 // export const actionChangeUsername = {
 //   type: CHANGE_USERNAME,
 //   payload: "lhlhi"
 // };
 
-export const changeUsername = (newUsername: string): LoginType => {
+export const changeUsername = (newUsername: string): LoginAction => {
   return {
     type: LoginActionType.CHANGE_USERNAME,
     payload: newUsername
@@ -15,7 +15,7 @@ export const changeUsername = (newUsername: string): LoginType => {
 };
 
 export const changeUsername1 = (newUsername: string) =>  {
-  return (dispatch: Dispatch<LoginActionType>) => {
+  return (dispatch: Dispatch<LoginAction>) => {
     dispatch({
       type: LoginActionType.CHANGE_USERNAME,
       payload: newUsername
@@ -28,7 +28,7 @@ export const changeUsername1 = (newUsername: string) =>  {
 //   payload: ""
 // };
 
-export const changePassword = (newPassword: string): LoginType => {
+export const changePassword = (newPassword: string): LoginAction => {
   return {
     type: LoginActionType.CHANGE_PASSWORD,
     payload: newPassword
@@ -37,7 +37,7 @@ export const changePassword = (newPassword: string): LoginType => {
 
 export const changePassword1 = (newPassword: string) => {
 
-  return (dispatch: Dispatch<LoginActionType>) => {
+  return (dispatch: Dispatch<LoginAction>) => {
     dispatch({
       type: LoginActionType.CHANGE_PASSWORD,
     payload: newPassword

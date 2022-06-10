@@ -11,4 +11,4 @@ interface changePasswordAction {
   payload: string
 }
 
-export type LoginType = changeUserNameAction | changePasswordAction
+export type LoginAction = changeUserNameAction | changePasswordAction

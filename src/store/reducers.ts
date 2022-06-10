@@ -1,14 +1,14 @@
-// import { combineReducers } from "redux";
-import { loginReducer } from "./login/reducers.ts";
+import { combineReducers } from "redux";
+import { loginReducer } from "./login/reducers";
 
-const combineReducers = (reducers) => {
-  return (state = {}, action) => {
-    return Object.keys(reducers).reduce((nextState, key) => {
-      nextState[key] = reducers[key](state[key], action);
-      return nextState;
-    }, {});
-  };
-};
+// const combineReducers = (reducers) => {
+//   return (state = {}, action) => {
+//     return Object.keys(reducers).reduce((nextState, key) => {
+//       nextState[key] = reducers[key](state[key], action);
+//       return nextState;
+//     }, {});
+//   };
+// };
 
 export default combineReducers({
   // auth: authReducer,
