@@ -1,5 +1,5 @@
 // import { combineReducers } from "redux";
-import { loginReducer } from "./login/reducers";
+import { loginReducer } from "./login/reducers.ts";
 
 const combineReducers = (reducers) => {
   return (state = {}, action) => {

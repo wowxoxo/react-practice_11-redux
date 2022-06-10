@@ -1,4 +1,4 @@
-import { CHANGE_USERNAME, CHANGE_PASSWORD } from "../../constants/actionTypes";
+import { CHANGE_USERNAME, CHANGE_PASSWORD } from "./action-types.ts";
 
 const initState = {
   username: "",

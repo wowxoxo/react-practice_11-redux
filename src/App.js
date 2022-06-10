@@ -1,10 +1,15 @@
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
 import "./App.css";
-import { changePassword, changeUsername } from "./store/login/actions";
+import { changePassword, changeUsername } from "./store/login/actions-creators.ts";
+import * as loginActionCreators from "./store/login/actions-creators.ts"
 
 function App(props) {
   const { username, password, dispatch, changeUsername, changePassword } =
     props;
+
+    const dispatch1 = useDispatch();
+    const { changeUsername1 } = bindActionCreators(loginActionCreators, dispatch1)
 
   return (
     <div className="login-form">
@@ -14,6 +19,7 @@ function App(props) {
           <input
             type="text"
             value={username}
+            // onChange={(event) => { dispatch({ type: 'CHANGE_USERNAME', payload: event.target.value }) }}
             // onChange={(event) => {
             //   dispatch(changeUsername(event.target.value));
             // }}
