@@ -10,10 +10,13 @@ import { loginReducer } from "./login/reducers";
 //   };
 // };
 
-export default combineReducers({
+const reducers =  combineReducers({
   // auth: authReducer,
   login: loginReducer
 });
+
+export default reducers
+export type RootState = ReturnType< typeof reducers>
 
 const arr = [1, 2, 3, 4, 5];
 
