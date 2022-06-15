@@ -3,7 +3,8 @@ import { LoginAction } from "./actions";
 
 const initState = {
   username: "",
-  password: ""
+  password: "",
+  hobbies: ['walk'] as string[]
 };
 
 export const loginReducer = (state: typeof initState = initState, action: LoginAction) => {

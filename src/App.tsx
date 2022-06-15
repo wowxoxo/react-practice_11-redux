@@ -1,20 +1,40 @@
-import { connect, useDispatch } from "react-redux";
+import { connect, ConnectedProps, useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import "./App.css";
-import { changePassword, changeUsername } from "./store/login/actions-creators.ts";
-import * as loginActionCreators from "./store/login/actions-creators.ts"
+import { changePassword, changeUsername } from "./store/login/actions-creators";
+import * as loginActionCreators from "./store/login/actions-creators"
+import { RootState } from "./store/reducers";
+import { Dispatch } from "react";
+import { LoginAction } from "./store/login/actions";
 
-function App(props) {
+interface DispatchToProps {
+  dispatch?: Dispatch<LoginAction>
+}
+
+interface AppProps extends PropsFromRedux, DispatchToProps {
+  msg: string
+}
+
+function App(props: AppProps) {
   const { username, password, dispatch, changeUsername, changePassword } =
     props;
 
-    const dispatch1 = useDispatch();
-    const { changeUsername1 } = bindActionCreators(loginActionCreators, dispatch1)
+    const dispatch1: Dispatch<LoginAction> = useDispatch();
+    // const { changeUsername1 } = bindActionCreators(loginActionCreators, dispatch1)
+
+    const username2 = useSelector((state: RootState) => state.login.username)
+    const hobbies: readonly string[] = useSelector((state: RootState) => state.login.hobbies)
+
+    // hobbies.push('sdsd')
+
+    // const arr = []
+    // arr.push('sd')
 
   return (
     <div className="login-form">
       <form action="/examples/actions/confirmation.php" method="post">
         <h2 className="text-center">Log in</h2>
+        {hobbies.map(hobby => (<div key={hobby}>{hobby}</div>))}
         <div className="form-group">
           <input
             type="text"
@@ -23,13 +43,17 @@ function App(props) {
             // onChange={(event) => {
             //   dispatch(changeUsername(event.target.value));
             // }}
+            // onChange={(event) => {
+            //   changeUsername(event.target.value);
+            // }}
             onChange={(event) => {
-              changeUsername(event.target.value);
+              dispatch1(changeUsername(event.target.value));
             }}
             className="form-control"
             placeholder="Username"
-            required="required "
+            required={true}
           />
+          <div>{username2}</div>
         </div>
         <div className="form-group">
           <input
@@ -43,7 +67,7 @@ function App(props) {
             }}
             className="form-control"
             placeholder="Password"
-            required="required"
+            required={true}
           />
         </div>
         <div className="form-group">
@@ -68,7 +92,7 @@ function App(props) {
 }
 
 // putStateKeysToComponentPropsAndMap
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: RootState) => {
   console.log(state);
   return {
     username: state.login.username,
@@ -81,6 +105,8 @@ const mapDispatchToProps = {
   changePassword
 };
 
-const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
+const AppConnector = connect(mapStateToProps, mapDispatchToProps);
 
-export default AppContainer;
+type PropsFromRedux = ConnectedProps<typeof AppConnector>
+
+export default AppConnector(App);
